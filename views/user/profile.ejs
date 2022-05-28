@@ -1,0 +1,89 @@
+<style>
+  .product-index-box img {
+  width: 100%;
+  height: 20em;
+  object-fit: cover;
+  border: 1px solid #000000;
+  border-radius: 50%;
+}
+h3{
+  text-align: center;
+  font-family: "Jost", sans-serif;
+}
+.jost{
+  font-family: "jost", sans-serif;
+}
+.strong{
+   width: 180px; 
+   text-align: center; 
+   margin-left: 450px; 
+   padding: 20px; 
+   padding-top: 10px;
+}
+</style>
+
+
+<%- include ../partials/header %>
+<%- include ../partials/categories-navbar %>
+
+<div class="container">
+  <!-- Flash messages -->
+      <div class="row mt-3 mb-3">
+        <div class="col-md-8 m-auto">
+          <% if (successMsg) { %>
+          <div id="success" class="alert alert-success">
+            <%= successMsg %>
+          </div>
+          <% } else { %>
+          <div id="success" class="alert alert-success d-none"></div>
+          <% } %>
+        </div>
+        <div class="col-md-8 m-auto">
+          <% if (errorMsg) { %>
+          <div id="error" class="alert alert-danger">
+            <%= errorMsg %>
+          </div>
+          <% } else { %>
+          <div id="error" class="alert alert-danger d-none"></div>
+          <% } %>
+        </div>
+      </div>
+  <!-- User's orders -->
+  <div class="row mt-4">
+    <div class="col-md-8 m-auto">
+      <% if (orders != null && orders.length > 0) { %>
+      <h3>History of your orders</h3>
+      <% orders.forEach( order => { %>
+      <div class="card m-3" style="border-radius: 30px; border-color: #000000;">
+        <div class="card-body">
+          <p class="card-text ">
+            <ul class="list-group">
+              <% order.cart.items.forEach( item => { %>
+              <li class="list-group-item d-flex justify-content-between align-items-center jost"  style="background-color: #ffd0d5e3; font-weight: bold;">
+                <%= item.title %> | <%= item.qty %> Items
+                <span class="badge badge-info badge-pill" style="background-color: #de5b6d;"><%= item.price %></span>
+              </li>
+              <%}) %>
+            </ul>
+            <ul>
+              <li>
+                <div class="card-footer jost strong" style="background-color: #de5b6d;">
+                  <strong style="color:white">Total Price: $<%= order.cart.totalCost %></strong>
+                </div>
+              </li>
+            </ul>
+          </p>
+        </div>
+      </div>
+      <hr class="gradient-style" style="margin: 30px;" />
+      <%}) %>
+      <%} else { %>
+        <h3 class="text-center jost" >You have not made any orders yet</h3>
+      <%} %>
+    </div>
+  </div>
+</div>
+<img src="/images/profileimage.jpg" alt="profile-image" style="width: 570px; height: 350px; margin-bottom: 0;">
+
+  <%- include ../partials/footer %>
+
