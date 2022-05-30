@@ -45,5 +45,13 @@
     "slugify": "^1.6.5",
     "stripe": "^8.219.0",
     "styled-components": "^5.3.5"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nama-Salameh/final-version.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Nama-Salameh/final-version/issues"
+  },
+  "homepage": "https://github.com/Nama-Salameh/final-version#readme"
 }

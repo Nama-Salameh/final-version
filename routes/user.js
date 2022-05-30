@@ -255,7 +255,7 @@ router.post(
         req.session.oldUrl = null;
         res.redirect(oldUrl);
       } else {
-        res.redirect("/user/profile");
+        res.redirect("/home");
       }
     } catch (err) {
       console.log(err);
@@ -294,7 +294,7 @@ router.get("/logout", middleware.isLoggedIn, (req, res) => {
 router.get('/google', passport.authenticate('google', { scope: ['profile', 'email',] }));
 
 router.get('/google/callback', passport.authenticate('google', { failureRedirect: '/signin' }), (req, res) => {
-    res.redirect('/');
+    res.redirect('/home');
 });
 
 

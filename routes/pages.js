@@ -15,6 +15,11 @@ router.get("/about-us", (req, res) => {
     pageName: "About Us",
   });
 });
+router.get("/careers", (req, res) => {
+  res.render("pages/careers", {
+    pageName: "",
+  });
+});
 
 //GET: display shipping policy page *
 router.get("/shipping-policy", (req, res) => {

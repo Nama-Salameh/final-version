@@ -9,7 +9,7 @@
         <%=errorMsg %>
       </div>
       <%}%>
-      <form action="/user/signup" method="POST">
+      <form action="/user/signup" method="POST"id="sign-up">
         <div class="form-group">
           <label for="name">Name</label>
           <input
@@ -32,6 +32,7 @@
             name="password"
             id="password"
           />
+          <p id="message" style="color:red;display:none; font-size:80%;">Use password between 8 to 24 characters at least one numeric digit, one uppercase and one lowercase letter and syumbols!!</p>
         </div>
         <div class="form-group">
           <label for="password2">Verify Password</label>
@@ -43,12 +44,46 @@
           />
         </div>
         <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
-        <button type="submit" class="btn btn-primary button-style">
+        <button type="submit"id="submit" class="btn btn-primary button-style">
           Sign Up
         </button>
       </form>
     </div>
   </div>
 </div>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+crossorigin="anonymous">
+</script>
+<script>
+  let password = document.getElementById("password");
+let submit=document.getElementById("submit");
+password.addEventListener("input", () => {
+let s = 0;
+if(password.value.length>= 8 && password.value.length<=24){
+if(/[A-Z]/.test(password.value)){
+s++;
+}
+if(/[a-z]/.test(password.value)){
+s++;
+}
+if(/[0-9]/.test(password.value)){
+s++;
+}
+if(/[^A-Za-z0-9]/.test(password.value)){
+s++;
+}
+}
+console.log(s);
+if(s<4){
+document.getElementById("message").style.display = "block";
+document.getElementById("sign-up").method="get";
+}
+if(s==4){
+document.getElementById("message").style.display = "none";
+document.getElementById("sign-up").method="post";	  
+}
+})
+</script>
 <%- include ../partials/footer %>
+

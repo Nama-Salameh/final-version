@@ -147,6 +147,10 @@
                 id="password"
               />
             </div>
+            <!-- added a new button for redirecting to forgot password page  -->
+    <p class="new-account-and-forget-password" >
+      <a class="card-link" style="margin-left: 45%;" href="/user/forgot-password"><img src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" class="img-forgot-password"> Forgot password? </a>
+      </p>
             <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
             <button type="submit" class="btn btn-primary button-style">
               Sign In
@@ -164,10 +168,7 @@
     <hr> <p id="or"> Or </p> 
     <a class="button-google" href="google" style="margin-left: 42%; width: 400px; "><img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/archive/5/53/20210618182605%21Google_%22G%22_Logo.svg">Continue With Google</a>
     </div>
-    <!-- added a new button for redirecting to forgot password page  -->
-    <p class="new-account-and-forget-password" >
-    <a class="card-link" style="margin-left: 45%;" href="/user/forgot-password"><img src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" class="img-forgot-password"> Forgot password? </a>
-    </p>
+    
     
     </form>
     </div> 
